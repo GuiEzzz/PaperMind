@@ -13,28 +13,30 @@ const FileUpload = () => {
     }
   };
 
-  /*const handleUpload = async () => {
+  const handleUpload = async () => {
     if (!file) return;
     setUploading(true);
 
     const formData = new FormData();
     formData.append("file", file);
 
-    const res = await fetch("http://localhost:8000/upload", {
+    const res = await fetch("http://localhost:3000/ocr", {
       method: "POST",
       body: formData,
     });
 
+    const text = await res.text();
+
     if (res.ok) {
       const data = await res.json();
-      router.push(`/chat?documentId=${data.document_id}`);
+      router.push(`/chat?prompt=${encodeURIComponent(text)}`);
     } else {
       alert("Erro ao enviar o arquivo!");
     }
     setUploading(false);
-  };*/
+  };
 
-  const handleUpload = async () => {
+  /*const handleUpload = async () => {
     if (!file) return;
     setUploading(true);
   
@@ -45,7 +47,7 @@ const FileUpload = () => {
       router.push(`/chat?documentId=${fakeId}`);
       setUploading(false);
     }, 1000);
-  };
+  };*/
   
 
   return (

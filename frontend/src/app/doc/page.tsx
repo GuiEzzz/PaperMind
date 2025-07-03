@@ -1,6 +1,9 @@
+"use client";
+
 import FileUpload from "@/components/FileUpload";
 
 export default function HomePage() {
+
   return (
     <main className="min-h-screen flex flex-col justify-center items-center bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
       <div className="w-full max-w-md bg-gray-900 bg-opacity-95 rounded-2xl shadow-2xl p-8 flex flex-col items-center animate-fade-in">
