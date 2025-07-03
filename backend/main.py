@@ -3,21 +3,31 @@ from google.cloud import vision
 from google.oauth2 import service_account
 from dotenv import load_dotenv
 import os
+import json
+from fastapi.middleware.cors import CORSMiddleware
 
 load_dotenv()
 
 app = FastAPI()
 
-cred_path = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000"],  # frontend Next.js
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+cred_path = os.getenv("GOOGLE_CREDENTIALS")
 
 # Autenticação
-credentials = service_account.Credentials.from_service_account_file(cred_path)
+credentials = json.loads(cred_path)
 client = vision.ImageAnnotatorClient(credentials=credentials)
 
 @app.post("/ocr")
 async def extract_text(file: UploadFile = File(...)):
-    contents = await file.read()
-    image = vision.Image(content=contents)
+    content = await file.read()
+    image = vision.Image(content=content)
     response = client.text_detection(image=image)
     texts = response.text_annotations
 

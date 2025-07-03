@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import axios from "axios";
 
 const FileUpload = () => {
   const [file, setFile] = useState<File | null>(null);
@@ -20,19 +21,21 @@ const FileUpload = () => {
     const formData = new FormData();
     formData.append("file", file);
 
-    const res = await fetch("http://localhost:3000/ocr", {
+    console.log('passou aqui');
+    if (file.type === "application/pdf") {
+      console.log("PDF");
+    }
+    
+    /*const res = await fetch("http://localhost:8000/ocr", {
       method: "POST",
       body: formData,
-    });
+    });*/
+    const res = await axios.post("http://localhost:8000/ocr", formData);
 
-    const text = await res.text();
 
-    if (res.ok) {
-      const data = await res.json();
+    const text = res.data.text;
+
       router.push(`/chat?prompt=${encodeURIComponent(text)}`);
-    } else {
-      alert("Erro ao enviar o arquivo!");
-    }
     setUploading(false);
   };
 
