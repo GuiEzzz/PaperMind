@@ -21,7 +21,8 @@ app.add_middleware(
 cred_path = os.getenv("GOOGLE_CREDENTIALS")
 
 # Autenticação
-credentials = json.loads(cred_path)
+creds_dict = json.loads(cred_path)
+credentials = service_account.Credentials.from_service_account_info(creds_dict)
 client = vision.ImageAnnotatorClient(credentials=credentials)
 
 @app.post("/ocr")

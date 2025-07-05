@@ -6,13 +6,13 @@ export default function ChatPage() {
   const searchParams = useSearchParams();
   const documentId = searchParams.get("documentId");
 
-  if (!documentId) {
+  /*if (!documentId) {
     return (
       <main className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
         <h2 className="text-white">Documento não encontrado. Volte e faça upload novamente.</h2>
       </main>
     );
-  }
+  }*/
 
   return (
     <main className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
