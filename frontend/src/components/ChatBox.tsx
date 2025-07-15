@@ -44,20 +44,31 @@ const ChatBox: React.FC<ChatBoxProps> = ({ documentId }) => {
     setMessages((msgs) => [...msgs, { type: "user", text: input }]);
     setLoading(true);
 
-    // MOCK da resposta: simule o backend removendo o fetch e usando setTimeout
+    setInput("");
+
+    const res = await fetch("http://localhost:8000/ask", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({
+        documentId,
+        question: input
+      })
+    });
+    const data = await res.json();
+    const answer = data.answer;
+    
     setTimeout(() => {
       setMessages((msgs) => [
         ...msgs,
         {
           type: "assistant",
-          text: `Aqui está uma resposta simulada para: "${input}"`,
+          text: answer,
           source: "Fonte: Este é um trecho simulado do documento original.",
         },
       ]);
       setLoading(false);
     }, 1200);
 
-    setInput("");
   };
 
   return (
@@ -65,7 +76,7 @@ const ChatBox: React.FC<ChatBoxProps> = ({ documentId }) => {
       <div
         ref={chatRef}
         className="border border-gray-800 bg-gray-900 rounded-lg p-6 shadow-inner custom-scrollbar"
-        style={{ height: "700px", overflowY: "auto" }}
+        style={{ height: "600px", overflowY: "auto" }}
       
       >
         {messages.length === 0 && (

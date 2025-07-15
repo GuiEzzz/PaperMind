@@ -21,21 +21,16 @@ const FileUpload = () => {
     const formData = new FormData();
     formData.append("file", file);
 
-    console.log('passou aqui');
-    if (file.type === "application/pdf") {
-      console.log("PDF");
-    }
-    
-    /*const res = await fetch("http://localhost:8000/ocr", {
+    const res = await fetch("http://localhost:8000/ocr", {
       method: "POST",
       body: formData,
-    });*/
-    const res = await axios.post("http://localhost:8000/ocr", formData);
+    });
 
 
-    const text = res.data.text;
+    const data = await res.json();
 
-      router.push(`/chat?prompt=${encodeURIComponent(text)}`);
+    router.push(`/chat?documentId=${data.documentId}`);
+
     setUploading(false);
   };
 
