@@ -91,7 +91,6 @@ async def ask_question(req: QuestionRequest):
     )
     
     # Adiciona a resposta do modelo
-    print(resposta)
     assistant_reply = resposta.choices[0].message.content
     messages.append({"role": "assistant", "content": assistant_reply})
 
