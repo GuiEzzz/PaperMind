@@ -39,8 +39,7 @@ git clone https://github.com/GuiEzzz/PaperMind.git
 cd PaperMind
 ```
 
-2. Configure variáveis de ambiente 
-Crie dois arquivos: 
+2. Configure variáveis de ambiente  
 📁 backend/.env:
 
 ```env
@@ -75,7 +74,7 @@ npm run dev
 ```
 
 
-📸 Capturas de Tela 
+📸 Capturas de Tela  
 Login 
 ![Tela de login](assets/login.png "Tela de login")
 
