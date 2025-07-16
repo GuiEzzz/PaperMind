@@ -56,6 +56,7 @@ const ChatBox: React.FC<ChatBoxProps> = ({ documentId }) => {
     });
     const data = await res.json();
     const answer = data.answer;
+    const origin = data.origin;
     
     setTimeout(() => {
       setMessages((msgs) => [
@@ -63,7 +64,7 @@ const ChatBox: React.FC<ChatBoxProps> = ({ documentId }) => {
         {
           type: "assistant",
           text: answer,
-          source: "Fonte: Este é um trecho simulado do documento original.",
+          source: origin,
         },
       ]);
       setLoading(false);

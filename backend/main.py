@@ -12,6 +12,7 @@ from pydantic import BaseModel
 load_dotenv()
 
 prompts = {}
+origemList = []
 
 
 api_key = os.getenv("OPENAI_API_KEY")
@@ -66,6 +67,14 @@ async def ask_question(req: QuestionRequest):
 
     # Se ainda não tiver, adiciona a instrução
     if not has_system:
+        origem = openai_client.responses.create(
+            model="gpt-4.1-mini",
+            temperature=0.2,
+            input=f"Com base no texto, gere uma linha resumida do conteúdo. Levando em consideração que será adicionado no campo 'origem' das respostas {img_text}"
+        )
+
+        origemList.append(origem.output_text)
+
         messages.append({
             "role": "system",
             "content": f"Você deve responder com base no seguinte texto extraído de uma imagem:\n\n{img_text}"
@@ -77,14 +86,17 @@ async def ask_question(req: QuestionRequest):
     # Envia o histórico completo
     resposta = openai_client.chat.completions.create(
         model="gpt-4.1-mini",
+        temperature=0.5,
         messages=messages
     )
     
     # Adiciona a resposta do modelo
+    print(resposta)
     assistant_reply = resposta.choices[0].message.content
     messages.append({"role": "assistant", "content": assistant_reply})
 
     # Salva o histórico atualizado
     doc_data["messages"] = messages
 
-    return {"answer": assistant_reply}
+    return {"answer": assistant_reply,
+            "origin": origemList[0]}

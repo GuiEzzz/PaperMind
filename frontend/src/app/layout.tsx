@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "PaperMind",
-  description: "Um assistente de atendimento inteligente baseado em documentos escaneados (PDFs ou imagens). O usuário envia um documento, o sistema faz OCR, extrai o texto, gera vetores semânticos, e permite consultas via chat usando LLM (GPT-4-mini). A resposta vem acompanhada do trecho original do documento.",
+  description: "Um assistente de atendimento inteligente baseado em documentos escaneados (imagens). O usuário envia um documento, o sistema faz OCR, extrai o texto, e permite consultas via chat usando LLM (GPT-4-mini). A resposta vem acompanhada do trecho original do documento.",
 };
 
 export default function RootLayout({
