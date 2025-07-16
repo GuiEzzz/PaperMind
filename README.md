@@ -1,55 +1,100 @@
-# Document Assistant – OCR + LLM Chat
+'''markdown
 
-Este projeto integra OCR, embeddings, FAISS e LLM para criar um assistente de atendimento baseado em documentos escaneados (PDF ou imagens).
+🧠 PaperMind 1.0
+PaperMind é um assistente inteligente capaz de ler, compreender e responder perguntas sobre imagens enviadas. Combinando OCR e IA generativa, ele permite consultas rápidas e precisas aos seus arquivos.
 
-## Funcionalidades
+✨ Funcionalidades
+📄 Upload de imagens
 
-- Upload de documentos escaneados (PDF/JPEG/PNG)
-- Extração de texto via OCR
-- Indexação inteligente via embeddings + FAISS
-- Chat inteligente: faça perguntas sobre o documento e receba respostas fundamentadas
+🔍 Extração automática de texto via Google Vision OCR
 
-## Tecnologias
+💬 Chat com respostas baseadas no conteúdo dos documentos
 
-- Backend: Python + FastAPI
-- OCR: Tesseract (ou Google Vision API)
-- Embeddings: OpenAI Embeddings API
-- LLM: OpenAI GPT-4 API
-- Vector DB: FAISS
-- Frontend: Next.js + Tailwind CSS
+🎯 Retorno do trecho original do texto como evidência
 
-## Como rodar
+🛠️ Tecnologias Utilizadas
+Backend
+Python + FastAPI
+
+Google Vision API para OCR
+
+OpenAI GPT API para geração de respostas
+
+Frontend
+Next.js (React framework)
+
+Tailwind CSS para estilização
+
+🚀 Como Executar Localmente
+Pré-requisitos
+Python 3.10+
+
+Node.js 18+
+
+Conta na OpenAI com chave de API
+
+Conta no Google Cloud com chave da Vision API
 
 1. Clone o repositório
-2. Inicie o backend:
-    ```
-    cd backend
-    pip install -r requirements.txt
-    uvicorn app.main:app --reload
-    ```
-3. Inicie o frontend:
-    ```
-    cd frontend
-    npm install
-    npm run dev
-    ```
-4. Acesse o frontend em `http://localhost:3000`
+'''bash
+git clone https://github.com/GuiEzzz/PaperMind.git
+cd PaperMind
+'''
 
-## Roadmap (MVP)
+2. Configure variáveis de ambiente
+Crie dois arquivos:
+📁 backend/.env:
 
-- [ ] Upload de documento
-- [ ] OCR + chunking + embedding
-- [ ] Indexação no FAISS
-- [ ] Perguntas e respostas via chat
-- [ ] Exibir fonte da resposta
+'''env
+OPENAI_API_KEY=sk-...
+GOOGLE_CREDENTIALS=credentials.json
+'''
 
-## Extensões futuras
+📁 frontend/.env.local:
 
-- Autenticação
-- Suporte multi-documento
-- Dashboard de uso
-- Deploy cloud/Docker
+'''env
+JWT_SECRET=...
+LOGIN_USER=...
+LOGIN_PASS=...
+'''
 
----
+💡 Você pode obter o arquivo credentials.json no console do Google Cloud.
 
-Contribua ou faça perguntas via Issues!
+3. Instale e execute o backend
+'''bash
+cd backend
+python -m venv venv
+source venv/bin/activate # Windows: venv\Scripts\activate
+pip install -r requirements.txt
+uvicorn main:app --reload
+'''
+
+4. Instale e execute o frontend
+'''bash
+cd ../frontend
+npm install
+npm run dev
+'''
+
+'''markdown
+📸 Capturas de Tela
+Login
+![Tela de login](assets/login.png)
+
+Upload do documento
+![Tela de upload](assets/doc.png)
+'''
+
+🧩 Extensões Futuras
+Suporte a múltiplos arquivos
+
+Classificação automática de documentos
+
+Autenticação de usuários
+
+Armazenamento em banco de dados
+
+📄 Licença
+Este código é fornecido apenas para fins educacionais e pessoais.
+É proibido o uso comercial sem autorização expressa do autor.
+© 2025 Gui Enz
