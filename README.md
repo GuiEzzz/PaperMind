@@ -1,7 +1,7 @@
 # PaperMind 1.0  
 PaperMind é um assistente inteligente capaz de ler, compreender e responder perguntas sobre imagens enviadas. Combinando OCR e IA generativa, ele permite consultas rápidas e precisas aos seus arquivos.
 
-✨ Funcionalidades
+✨ Funcionalidades  
 📄 Upload de imagens
 
 🔍 Extração automática de texto via Google Vision OCR
