@@ -23,8 +23,9 @@ Frontend
 
     Tailwind CSS para estilização
 
-🚀 Como Executar Localmente
+🚀 Como Executar Localmente  
 Pré-requisitos
+```bash
     Python 3.10+
 
     Node.js 18+
@@ -32,7 +33,7 @@ Pré-requisitos
     Conta na OpenAI com chave de API
 
     Conta no Google Cloud com chave da Vision API
-
+```
 1. Clone o repositório
 ```bash
 git clone https://github.com/GuiEzzz/PaperMind.git
