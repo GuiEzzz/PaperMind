@@ -1,5 +1,3 @@
-```markdown
-
 🧠 PaperMind 1.0
 PaperMind é um assistente inteligente capaz de ler, compreender e responder perguntas sobre imagens enviadas. Combinando OCR e IA generativa, ele permite consultas rápidas e precisas aos seus arquivos.
 
@@ -14,26 +12,26 @@ PaperMind é um assistente inteligente capaz de ler, compreender e responder per
 
 🛠️ Tecnologias Utilizadas
 Backend
-Python + FastAPI
+    Python + FastAPI
 
-Google Vision API para OCR
+    Google Vision API para OCR
 
-OpenAI GPT API para geração de respostas
+    OpenAI GPT API para geração de respostas
 
 Frontend
-Next.js (React framework)
+    Next.js (React framework)
 
-Tailwind CSS para estilização
+    Tailwind CSS para estilização
 
 🚀 Como Executar Localmente
 Pré-requisitos
-Python 3.10+
+    Python 3.10+
 
-Node.js 18+
+    Node.js 18+
 
-Conta na OpenAI com chave de API
+    Conta na OpenAI com chave de API
 
-Conta no Google Cloud com chave da Vision API
+    Conta no Google Cloud com chave da Vision API
 
 1. Clone o repositório
 ```bash
