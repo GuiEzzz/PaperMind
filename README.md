@@ -39,8 +39,8 @@ git clone https://github.com/GuiEzzz/PaperMind.git
 cd PaperMind
 ```
 
-2. Configure variáveis de ambiente
-Crie dois arquivos:
+2. Configure variáveis de ambiente\n
+Crie dois arquivos:\n
 📁 backend/.env:
 
 ```env
