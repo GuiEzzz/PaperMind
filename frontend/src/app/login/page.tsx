@@ -15,17 +15,19 @@ export default function LoginPage() {
     e.preventDefault();
     setErrorMessage('');
 
-    // Simulação de autenticação (remova no backend real)
-    if (username === 'admin' && password === 'papermind') {
-      router.push('/doc');
+    const response = await fetch('/api/login', {
+      method: 'POST',
+      body: JSON.stringify({ username, password }),
+      headers: { 'Content-Type': 'application/json' },
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+        router.push('/doc');
     } else {
       setErrorMessage('Usuário ou senha incorretos. Tente novamente.');
     }
-
-    // Para produção, use:
-    // const response = await fetch('/api/login', { ... });
-    // const data = await response.json();
-    // if (data.success) { ... }
   };
 
   return (

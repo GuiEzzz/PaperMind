@@ -52,7 +52,7 @@ const FileUpload = () => {
     <div className="flex flex-col items-center gap-4">
       <input
         type="file"
-        accept=".pdf,image/*"
+        accept=".jpeg, .png, .jpg"
         onChange={handleFileChange}
         className="file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0
                    file:text-sm file:font-semibold file:bg-blue-600 file:text-white
