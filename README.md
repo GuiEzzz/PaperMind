@@ -1,4 +1,4 @@
-'''markdown
+```markdown
 
 🧠 PaperMind 1.0
 PaperMind é um assistente inteligente capaz de ler, compreender e responder perguntas sobre imagens enviadas. Combinando OCR e IA generativa, ele permite consultas rápidas e precisas aos seus arquivos.
@@ -36,54 +36,54 @@ Conta na OpenAI com chave de API
 Conta no Google Cloud com chave da Vision API
 
 1. Clone o repositório
-'''bash
+```bash
 git clone https://github.com/GuiEzzz/PaperMind.git
 cd PaperMind
-'''
+```
 
 2. Configure variáveis de ambiente
 Crie dois arquivos:
 📁 backend/.env:
 
-'''env
+```env
 OPENAI_API_KEY=sk-...
 GOOGLE_CREDENTIALS=credentials.json
-'''
+```
 
 📁 frontend/.env.local:
 
-'''env
+```env
 JWT_SECRET=...
 LOGIN_USER=...
 LOGIN_PASS=...
-'''
+```
 
 💡 Você pode obter o arquivo credentials.json no console do Google Cloud.
 
 3. Instale e execute o backend
-'''bash
+```bash
 cd backend
 python -m venv venv
 source venv/bin/activate # Windows: venv\Scripts\activate
 pip install -r requirements.txt
 uvicorn main:app --reload
-'''
+```
 
 4. Instale e execute o frontend
-'''bash
+```bash
 cd ../frontend
 npm install
 npm run dev
-'''
+```
 
-'''markdown
+```markdown
 📸 Capturas de Tela
 Login
 ![Tela de login](assets/login.png)
 
 Upload do documento
 ![Tela de upload](assets/doc.png)
-'''
+```
 
 🧩 Extensões Futuras
 Suporte a múltiplos arquivos
