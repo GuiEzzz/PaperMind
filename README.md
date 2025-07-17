@@ -10,21 +10,24 @@ PaperMind é um assistente inteligente capaz de ler, compreender e responder per
 
 🎯 Retorno do trecho original do texto como evidência
 
-🛠️ Tecnologias Utilizadas
-Backend
+🛠️ Tecnologias Utilizadas  
+Backend  
+```bash
     Python + FastAPI
 
     Google Vision API para OCR
 
     OpenAI GPT API para geração de respostas
-
-Frontend
+```
+Frontend  
+```bash
     Next.js (React framework)
 
     Tailwind CSS para estilização
-
-🚀 Como Executar Localmente
+```
+🚀 Como Executar Localmente  
 Pré-requisitos
+```bash
     Python 3.10+
 
     Node.js 18+
@@ -32,7 +35,7 @@ Pré-requisitos
     Conta na OpenAI com chave de API
 
     Conta no Google Cloud com chave da Vision API
-
+```
 1. Clone o repositório
 ```bash
 git clone https://github.com/GuiEzzz/PaperMind.git
@@ -82,7 +85,7 @@ Upload do documento
 ![Tela de upload](assets/doc.png "Tela para upload de arquivos")
 
 
-🧩 Extensões Futuras
+🧩 Extensões Futuras  
 Suporte a múltiplos arquivos
 
 Classificação automática de documentos
@@ -91,7 +94,7 @@ Autenticação de usuários
 
 Armazenamento em banco de dados
 
-📄 Licença
+📄 Licença  
 Este código é fornecido apenas para fins educacionais e pessoais.
 É proibido o uso comercial sem autorização expressa do autor.
 © 2025 Gui Enz
