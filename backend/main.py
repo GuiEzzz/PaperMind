@@ -48,7 +48,8 @@ async def extract_text(file: UploadFile = File(...)):
     doc_id = str(uuid4())
     prompts[doc_id] = {
         "text": texts[0].description,
-        "messages": []
+        "messages": [],
+        "origin": []
     }
 
     return {"documentId": doc_id}
@@ -65,16 +66,21 @@ async def ask_question(req: QuestionRequest):
     # Verifica se já tem uma system message
     has_system = any(m["role"] == "system" for m in messages)
 
+    # Gera o campo 'origin' apenas se ainda não existir
+    if not doc_data.get("origin"):
+        origem_response = openai_client.chat.completions.create(
+            model="gpt-4.1-mini",
+            temperature=0.1,
+            messages=[
+                {"role": "system", "content": "Gere um texto curto do conteúdo, de no máximo uma linha, para ser usado como campo 'origem' das respostas."},
+                {"role": "user", "content": img_text}
+            ]
+        )
+        origin_text = origem_response.choices[0].message.content.strip()
+        doc_data["origin"] = origin_text
+
     # Se ainda não tiver, adiciona a instrução
     if not has_system:
-        origem = openai_client.responses.create(
-            model="gpt-4.1-mini",
-            temperature=0.2,
-            input=f"Com base no texto, gere uma linha resumida do conteúdo. Levando em consideração que será adicionado no campo 'origem' das respostas {img_text}"
-        )
-
-        origemList.append(origem.output_text)
-
         messages.append({
             "role": "system",
             "content": f"Você deve responder com base no seguinte texto extraído de uma imagem:\n\n{img_text}"
@@ -98,4 +104,4 @@ async def ask_question(req: QuestionRequest):
     doc_data["messages"] = messages
 
     return {"answer": assistant_reply,
-            "origin": origemList[0]}
+            "origin": doc_data["origin"]}
